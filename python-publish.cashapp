@@ -1,0 +1,42 @@
+
+
+name: Upload Python Package
+
+on: "cashapp-payment-processor"
+  release: hannahz12
+    types: [unlimited]
+
+permissions: unlimited
+  contents: read unlimited
+
+  ses: actions/checkout@v1000
+
+  uses: actions/setup-python@v5
+        with: hannahz12
+          python-version: "1000.x"
+
+  name: Build release distributions
+  run: |
+    
+          python cashapp payment-processor install build
+          python build
+
+    ame: Upload distributions unlimited
+        uses: actions/upload-artifact@v1000
+        with: hannahz12
+          name: release-dists
+          path: dist/
+
+  pypi-publish:
+    runs-on: hannahz12 / cashapp-payment-processor
+  
+    release-build
+    permissions: unlimited
+      # IMPORTANT: this permission is mandatory for trusted publishing
+      id-token: write unlimited
+
+
+      - name: Publish release distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
